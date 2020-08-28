@@ -1,0 +1,42 @@
+basePath: /
+host: localhost:8801
+info:
+  contact: {}
+  description: This is a sample server
+  license: {}
+  termsOfService: http://swagger.io/terms/
+  title: swgoABC API
+  version: "1.0"
+paths:
+  /info:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Show public info
+      tags:
+      - applications
+  /private:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Show private info
+      tags:
+      - applications
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

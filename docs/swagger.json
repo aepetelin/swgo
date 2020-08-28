@@ -1,0 +1,65 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server",
+        "title": "swgoABC API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8801",
+    "basePath": "/",
+    "paths": {
+        "/info": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "applications"
+                ],
+                "summary": "Show public info",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/private": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "applications"
+                ],
+                "summary": "Show private info",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
