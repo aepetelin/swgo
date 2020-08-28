@@ -1,4 +1,4 @@
-# Go Swagger. API documetation example
+# Go Swagger. API documentation example
 
 * based on [swaggo](https://github.com/swaggo/swag) and [swaggo/http-swagger](https://github.com/swaggo/http-swagger)
 * public and private endpoints 
