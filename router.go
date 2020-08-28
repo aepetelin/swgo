@@ -52,14 +52,26 @@ func privateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func auth(next http.Handler) http.Handler {
+	var isValidToken = func(token string) bool {
+		return len(token) > 0
+	}
+
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Println("auth check")
-		a := r.Header.Get("Authorization")
-		if a == "" {
+
+		token := r.Header.Get("X-JWT")
+		if !isValidToken(token) {
 			http.Error(w, "not authorized", http.StatusUnauthorized)
 			return
 		}
-		log.Printf("Authorization: %s", a)
+		log.Printf("X-JWT: %s", token)
+
+		//a := r.Header.Get("Authorization")
+		//if a == "" {
+		//	http.Error(w, "not authorized", http.StatusUnauthorized)
+		//	return
+		//}
+		//log.Printf("Authorization: %s", a)
 		next.ServeHTTP(w, r)
 	})
 }

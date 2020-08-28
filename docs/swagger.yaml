@@ -37,6 +37,6 @@ paths:
 securityDefinitions:
   ApiKeyAuth:
     in: header
-    name: Authorization
+    name: X-JWT
     type: apiKey
 swagger: "2.0"

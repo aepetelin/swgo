@@ -11,7 +11,7 @@ import "log"
 
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
-// @name Authorization
+// @name X-JWT
 
 func main() {
 	log.Println("started ...")
